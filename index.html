@@ -3,7 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Knife and Hit</title>
+    <title>Unity WebGL Player | Joker Sliding</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build5.json", {onProgress: UnityProgress});
+    </script>
+
 
     <script type = "text/javascript" language = "javascript">
     var fullscreenID;
@@ -42,59 +50,49 @@
     <script type="text/javascript" src="//api.ok.ru/js/fapi5.js" defer="defer"></script>
 
   </head>
-  <body style="text-align: center">
-    <canvas id="unity-canvas" style="width: 1000px; height: 600px; background: #FFFFFF"></canvas>
+  <body>
+    <div class="webgl-content">
+
+    <div id="unityContainer" style="position:relative; width: 100vw; height: 100vh"></div>
 
     <!-- VK Full Screen -->
-    <div id="yandex_rtb_R-A-1343857-1" style="position: absolute; top: 16%; width: 1000px; height: 400px; display: none"></div>
+    <div id="yandex_rtb_R-A-1343857-1" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
 
     <!-- VK Mobile Full Screen -->
-    <canvas id="yandex_rtb_R-A-1343857-4" style="position: absolute; top: 16%; width: 1000px; height: 400px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1343857-4" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
 
     <!-- VK Horizontal Banner -->
-    <canvas id="yandex_rtb_R-A-1343857-2" style="position: absolute; bottom: 0; width: 1000px; height: 60px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1343857-2" style="position: absolute; bottom: 0; width: 100vw; height: 10vh; display: none"></div>
 
     <!-- VK Mobile Banner -->
-    <canvas id="yandex_rtb_R-A-1343857-6" style="position: absolute;  bottom: 0; width: 1000px; height: 60px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1343857-6" style="position: absolute;  bottom: 0; width: 100vw; height: 10vh; display: none"></div>
 
     <!-- VK Reward Video -->
-    <canvas id="yandex_rtb_R-A-1343857-3" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1343857-3" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
 
     <!-- VK Mobile Reward Video -->
-    <canvas id="yandex_rtb_R-A-1343857-5" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1343857-5" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
 
 
     <!-- OK Full Screen -->
-    <canvas id="yandex_rtb_R-A-1462161-1" style="position: absolute; top: 16%; width: 1000px; height: 400px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1462161-1" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
 
     <!-- OK Mobile Full Screen -->
-    <canvas id="yandex_rtb_R-A-1462161-4" style="position: absolute; top: 16%; width: 1000px; height: 400px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1462161-4" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
 
     <!-- OK Horizontal Banner -->
-    <canvas id="yandex_rtb_R-A-1462161-2" style="position: absolute; bottom: 0;  width: 1000px; height: 60px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1462161-2" style="position: absolute; bottom: 0;  width: 100vw; height: 10vh; display: none"></div>
 
     <!-- OK Mobile Banner -->
-    <canvas id="yandex_rtb_R-A-1462161-6" style="position: absolute;  bottom: 0; width: 1000px; height: 60px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1462161-6" style="position: absolute;  bottom: 0; width: 100vw; height: 10vh; display: none"></div>
 
     <!-- OK Reward Video -->
-    <canvas id="yandex_rtb_R-A-1462161-3" style="position: absolute; top: 16%; width: 1000px; height: 400px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1462161-3" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
 
     <!-- OK Mobile Reward Video -->
-    <canvas id="yandex_rtb_R-A-1462161-5" style="position: absolute; top: 16%; width: 1000px; height: 400px; display: none"></canvas>
+    <div id="yandex_rtb_R-A-1462161-5" style="position: absolute; top: 16%; width: 100vw; height: 67vh; display: none"></div>
 
-
-    <script src="Build/Build3.loader.js"></script>
-    <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/Build3.data",
-        frameworkUrl: "Build/Build3.framework.js",
-        codeUrl: "Build/Build3.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Nicso Game",
-        productName: "Knife and Hit",
-        productVersion: "1.0",
-      });
-    </script>
+    </div>
 
     <script type = "text/javascript" language = "javascript">
 
@@ -161,6 +159,13 @@
         unityInstance.SendMessage('AdsManager', 'TryToLoadCustomRewardVideo');
       }
     }
+    else if (method === "joinGroup") {
+      if (data === "already.member") {
+        unityInstance.SendMessage('VKMechanicsController', 'OpenGroup');
+      } else if (data == "group.access.denied" || data == "common.finder") {
+        unityInstance.SendMessage('VKMechanicsController', 'NoGroup');
+      }
+    }
   }
 
   function OKInitialization() {
@@ -199,6 +204,10 @@
         {"type": "link", "url": link}
       ]};
       FAPI.UI.postMediatopic(attachment);
+    }
+
+    function OKJoinGroup(id) {
+      FAPI.invokeUIMethod("joinGroup", id);
     }
 
     // VK
@@ -315,6 +324,14 @@
       })
     }
 
+    function VKJoinGroup(id) {
+      vkBridge.send("VKWebAppJoinGroupResult", {"group_id": id}).then(res => {
+        if (res.result === true) {
+          unityInstance.SendMessage('VKMechanicsController', 'OpenGroup');
+        }
+      })
+    }
+
 // Full Screen
     function ShowFullScreen() {
       document.getElementById('yandex_rtb_' + fullscreenID).style.display = 'block';
@@ -420,6 +437,5 @@
       document.getElementById('yandex_rtb_' + rewardvideoID).style.display = 'none';
     }
   </script>
-
   </body>
 </html>
