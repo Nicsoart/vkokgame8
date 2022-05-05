@@ -1,6 +1,6 @@
 {
 "companyName": "Nicso Games",
-"productName": "Joker Sliding",
+"productName": "Emoji Down",
 "productVersion": "1.0",
 "dataUrl": "Build5.data.unityweb",
 "wasmCodeUrl": "Build5.wasm.code.unityweb",
@@ -9,6 +9,7 @@
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "splashScreenStyle": "Light",
 "backgroundColor": "#FFFFFF",
+"cacheControl": {"default": "must-revalidate"},
 "developmentBuild": false,
 "multithreading": false,
 "unityVersion": "2019.3.0f6"
