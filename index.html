@@ -98,7 +98,7 @@
 
 // Initialization
     function VerticalInitialization() {
-      unityInstance.SendMessage('AdsManager', 'VerticalInitialization', 1);
+      unityInstance.SendMessage('PlatformManager', 'VerticalInitialization', 1);
     }
 
     function VKAdsInitialization() {
@@ -174,7 +174,6 @@
       function() {
         var geo_location = rParams.ip_geo_location.split(",");
         var language = geo_location[0];
-        console.log(language);
         unityInstance.SendMessage('PlayerManager', 'GetPlayerLanguage', language);
         unityInstance.SendMessage('PlayerManager', 'GetPlayerName', rParams.user_name);
         unityInstance.SendMessage('PlayerManager', 'PlayerAuthorized');
@@ -277,7 +276,9 @@
 
     function VKInvite() {
       vkBridge.send("VKWebAppShowInviteBox").catch(err => {
-        VK.callMethod("showInviteBox");
+        if (err.error_type !== "client_error") {
+          VK.callMethod("showInviteBox");
+        }
       })
     }
 
@@ -325,9 +326,13 @@
     }
 
     function VKJoinGroup(id) {
-      vkBridge.send("VKWebAppJoinGroupResult", {"group_id": id}).then(res => {
+      vkBridge.send("VKWebAppJoinGroup", {"group_id": Number(id)}).then(res => {
         if (res.result === true) {
           unityInstance.SendMessage('VKMechanicsController', 'OpenGroup');
+        }
+      }).catch(err => {
+        if (err.error_type !== "client_error") {
+        unityInstance.SendMessage('VKMechanicsController', 'NoGroup');
         }
       })
     }
